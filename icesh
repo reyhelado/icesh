@@ -1,18 +1,11 @@
 #!/usr/bin/env ruby
 # -*- mode: ruby -*-
 
-ROOT         = File.expand_path('..', __FILE__)
-CONFIG_PATH  = File.join(ROOT, 'etc')
-BIN_PATH     = File.join(ROOT, 'bin')
-SYS_BIN_PATH = File.join(ROOT, 'sbin')
-LIB_PATH     = File.join(ROOT, 'lib')
+ROOT = File.expand_path('..', __FILE__)
 
-$LOAD_PATH.unshift(LIB_PATH)
+$LOAD_PATH.unshift(File.join(ROOT, 'lib'))
 
-require 'icesh'
+require 'ice'
 
-Shell.new(CONFIG_PATH).tap do |sh|
-  sh.path.push(BIN_PATH, SYS_BIN_PATH)
-  sh.help_path.replace(sh.path.clone)
-  sh.start
-end
+$sh = Ice::Shell.new(ROOT)
+$sh.start
