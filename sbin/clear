@@ -1,0 +1,18 @@
+#!/bin/sh
+
+NAME="clear"
+PURPOSE="Cleans the screen."
+
+case "$1" in
+    -help|-h)
+        echo "Usage: $NAME"
+        echo $PURPOSE
+        exit
+        ;;
+    -purpose)
+        echo $PURPOSE
+        exit
+        ;;
+esac
+
+clear
